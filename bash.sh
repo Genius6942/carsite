@@ -1,8 +1,1 @@
-export NVM_DIR="$HOME/.nvm" &&
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" &&
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" &&
-
-nvm install node &&
-nvm use node
-
-alias n="node --experimental-repl-await"
+npm init -y && npm i --save-dev node@17 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH

@@ -6,7 +6,6 @@ export default function Home() {
       <Head>
         <title>cars</title>
       </Head>
-      <Header/>
     </div>
   )
 }

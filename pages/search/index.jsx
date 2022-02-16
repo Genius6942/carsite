@@ -1,12 +1,17 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Header from '/components/Header';
+import SearchResult from '/components/search/SearchResult';
 
 export default function Page() {
   const router = useRouter();
 
-  const [text, setText] = useState('Loading...');
+  // json data of cars
+  const [data, setData] = useState([]);
+  // which page ur on [1-10, 10-20]
+  const [page, setPage] = useState(0);
+  // Items in a page
+  const pageLength = 30;
 
   useEffect(async () => {
     const body = new URLSearchParams();
@@ -23,18 +28,25 @@ export default function Page() {
         body: body,
       }
     );
-    setText(await data.text());
-    console.log(text);
+    setData(await data.json());
+    await new Promise(r=>setTimeout(r, 1000));
   }, []);
-  
 
   return (
     <>
       <Head>
-        <title>Search - </title>
+        <title>Search - carsite</title>
       </Head>
       <main>
-        { text }
+        { data.length === 0 ? 'Loading...' : null }
+        { data.slice(page * pageLength, (page + 1) * pageLength).map(car => (
+          <SearchResult
+            make={ car.make }
+            model={ car.model }
+            year={ car.year }
+            image={ car.image }
+          />
+        )) }
       </main>
     </>
   );

@@ -35,7 +35,7 @@ export default function Header() {
           <input
             name = 'q'
             ref = { searchRef }
-            placeHolder = " Press '/' to search"
+            placeholder = " Press '/' to search"
             className = 'pl-2 text-black border-black rounded-full focus-visible:outline-none focus-visible:border-2'
           />
         </form>
@@ -44,7 +44,7 @@ export default function Header() {
   }
   
   return (
-    <div className = 'h-10'>
+    <div className = 'h-10 z-10'>
       <div className = "fixed top-0 left-0 flex items-center px-4 w-screen h-10 bg-theme text-white">
         <Link href = '/'>
           <a className = 'flex items-center font-bold text-lg'>
