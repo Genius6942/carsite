@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import SearchBar from '/components/search/SearchBar'
 
 export default function Header() {
   const HeaderLinkBtn = ({ text, to }) => (
@@ -12,36 +13,6 @@ export default function Header() {
       </Link>
     </div>
   );
-
-  const SearchBar = () => {
-    const searchRef = useRef(null);
-
-    useEffect(() => {
-      window.addEventListener('keydown', (e) => {
-        if (searchRef && searchRef.current) {
-          if (e.key === '/' || (e.key === 'k' && e.ctrlKey)) {
-            if (!'textarea, input'.split(' ').includes(e.target.tagName) && !e.target.getAttribute('contentEditable')) {
-              e.preventDefault();
-              searchRef.current.focus();
-            }
-          }
-        }
-      });
-    }, []);
-    
-    return (
-      <div className = 'ml-2'>
-        <form action = '/search' method = 'GET'>
-          <input
-            name = 'q'
-            ref = { searchRef }
-            placeholder = " Press '/' to search"
-            className = 'pl-2 text-black border-black rounded-full focus-visible:outline-none focus-visible:border-2'
-          />
-        </form>
-      </div>
-    )
-  }
   
   return (
     <div className = 'h-10 z-10'>
