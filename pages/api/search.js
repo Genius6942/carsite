@@ -6,7 +6,7 @@ export default async function search(req, res) {
 	const data = await col.aggregate([
 		{
 			"$search": {
-        "index": "autocomplete"
+        "index": "autocomplete",
 				"autocomplete": {
 					"query": `${req.body.query}`,
 					"path": "name",
