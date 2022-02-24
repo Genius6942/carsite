@@ -15,14 +15,15 @@ export default function Header() {
   );
   
   return (
-    <div className = 'h-10 z-10'>
-      <div className = "fixed top-0 left-0 flex items-center px-4 w-screen h-10 bg-theme text-white">
+    <div className = 'h-10'>
+      <div className = "fixed top-0 left-0 flex items-center px-4 w-screen h-10 bg-theme text-white z-10">
         <Link href = '/'>
           <a className = 'flex items-center font-bold text-lg'>
             <Image
               src = '/favicon.ico'
               width = { 30 }
               height = { 30 }
+							alt = 'carsite'
             />
             Cars Site
           </a>

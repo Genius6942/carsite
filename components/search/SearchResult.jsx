@@ -26,9 +26,15 @@ export default function SearchResult({ make, model, year, image }) {
 
 export function LoadingSearchResult() {
   return (
-    <Skeleton
-			width = { 60 }
-			height = { 60 }
-		/>
+		<div className = 'flex items-center pr-2'>
+			<Skeleton
+				className = 'mx-2'
+				width = { 60 }
+				height = { 60 }
+			/>
+			<div className = 'flex-grow'>
+				<Skeleton count = {2}/>
+			</div>
+		</div>
   )
 }

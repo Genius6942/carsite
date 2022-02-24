@@ -31,7 +31,7 @@ export default function Page() {
       <Head>
         <title>Search - carsite</title>
       </Head>
-      <main>
+      <main className='z-0 overflow-auto'>
         { data === null ? new Array(pageLength).fill().map((_, idx) => <LoadingSearchResult key={ idx }/>)
           : data.length > 1 ? data.slice(page * pageLength, (page + 1) * pageLength).map((car, idx) => (
           <SearchResult
