@@ -4,7 +4,7 @@ export default async function search(req, res) {
 	const { db } = await connectToDatabase();
 	const col = await db.collection('cars-all');
 	const data = await col.aggregate([
-		{
+		req.body.autocomplete ? {
 			"$search": {
         "index": "autocomplete",
 				"autocomplete": {
@@ -13,6 +13,17 @@ export default async function search(req, res) {
 					"fuzzy": {
 						"maxEdits": 2,
 						"prefixLength": 3
+					}
+				}
+			}
+		} :
+		{
+			$search: {
+				index: 'default',
+				text: {
+					query: `${req.body.query}`,
+					path: {
+						'wildcard': '*'
 					}
 				}
 			}

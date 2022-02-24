@@ -98,7 +98,7 @@ export default function SearchBar() {
               setInputValue(inputText);
               if (inputText.length > 0) { // there is content
                 // match items
-                let data = await ajax('/api/search', { query: inputText, limit: 10 });
+                let data = await ajax('/api/search', { query: inputText, limit: 10, autocomplete: true });
                 data = await data.json();
 								// uncomment to put a limit on number of results
                 // searchedBooks.length = Math.min(searchedBooks.length, Infinity);

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Skeleton from 'react-loading-skeleton';
 
 export default function SearchResult({ make, model, year, image }) {
   return (
@@ -10,11 +11,10 @@ export default function SearchResult({ make, model, year, image }) {
             src = { image }
             width = { 60 }
             height = { 60 }
+						alt = { `Image of a ${year} ${make} ${model}` }
           />
           <div className = 'ml-4 text-2xl'>
-            <Link href = { `/cars/${ make.toLowerCase() }` }>
-              { make }
-            </Link>
+						{ make }
           </div>
           { model }
           { year }
@@ -26,8 +26,9 @@ export default function SearchResult({ make, model, year, image }) {
 
 export function LoadingSearchResult() {
   return (
-    <div>
-      loading
-    </div>
+    <Skeleton
+			width = { 60 }
+			height = { 60 }
+		/>
   )
 }
