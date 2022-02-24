@@ -6,6 +6,8 @@ export default function Home() {
       <Head>
         <title>cars</title>
       </Head>
+      well its a car site ig
+      welcome to my stupid thingy
     </div>
   )
 }
